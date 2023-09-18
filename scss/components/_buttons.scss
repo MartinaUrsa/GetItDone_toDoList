@@ -1,0 +1,19 @@
+.start-button {
+    width: 170px;
+    height: 40px;
+    border-radius: 30px;
+    border-style: none;
+    background-color: $accent-color;
+    margin-top: 30px;
+    &:hover {
+        background-color: #133044;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: 100;
+        font-family: $main-font;
+        font-weight: lighter;
+    }
+}
