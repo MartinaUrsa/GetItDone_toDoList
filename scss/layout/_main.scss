@@ -1,5 +1,5 @@
 body {
-    background-color: $main-color;
+    background-color: $color-main;
     font-family: $main-font;
     main {
         .main-title {
@@ -31,10 +31,12 @@ body {
     }
 }
 
+
 @media (min-width: 768px) {
     body {
         main {
             .main-title {
+                height: 50vh;
                 h1 {
                     font-size: 100px;
                 }
@@ -51,6 +53,7 @@ body {
     }
 }
 
+
 @media (min-width: 1024px) {
     body {
         main {
@@ -62,7 +65,7 @@ body {
                 h1 {
                     font-family: $titles-font;
                     font-weight: lighter;
-                    font-size: 130px;
+                    font-size: 110px;
                     text-align: center;
                 }
                 .subtitle {
@@ -75,13 +78,11 @@ body {
                         background-color: black;
                     }
                     h2 {
-                        font-size: 30px;
                         font-weight: lighter;
                     }
                 }
             }
-        }
+        }    
     }
 }
-
 
