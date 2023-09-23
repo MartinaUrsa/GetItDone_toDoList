@@ -8,24 +8,24 @@
     <!-- Título -->
     <title>Get It Done | HOME</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- Favicon -->
-    <link rel="icon" href="./assets/getItDone Logo.svg">
+    <link rel="icon" href="../assets/getItDone Logo.svg">
 </head>
 <body>
     <header>
         <!-- Logo -->
         <a href="./index.html">
-            <img src="./assets/getItDone Logo.svg" alt="">
+            <img src="../assets/getItDone Logo.svg" alt="">
         </a>
         <!-- Navbar -->
         <div class="header-nav">
             <ul>
                 <li>
-                    <a href="#">HOME</a>
+                    <a href="../index.html">HOME</a>
                 </li>
                 <li>
-                    <a href="./pages/to-do.html">TO-DO LIST</a>
+                    <a href="to-do.html">TO-DO LIST</a>
                 </li>
                 <li>
                     <a href="#">HOME</a>
@@ -46,14 +46,35 @@
         </div>
     </header>
     <main>
-        <div class="main-title">
-            <h1>get it done.</h1>
-            <div class="subtitle">
-                <div class="line"></div>
-                <h2>TO-DO LIST</h2>
+        <section class="to-do">
+            <h3>my to-do list</h3>
+            <button class="new-list">
+                + NEW LIST
+            </button>
+            <div class="list">
+                <div class="tasks">
+                    <div class="task">
+                        <input type="checkbox" id="tasks-checkbox"">
+                        <label for="tasks-checkbox">Task 1</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="tasks-checkbox"">
+                        <label for="tasks-checkbox">Task 2</label>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox" id="tasks-checkbox"">
+                        <label for="tasks-checkbox">Task 3</label>
+                    </div>
+                    <div class="task new">
+                        <input type="checkbox" id="tasks-checkbox"">
+                        <label for="tasks-checkbox">New Task</label>
+                    </div>
+                </div>
+                <button class="new-task">
+                    +NEW TASK
+                </button>
             </div>
-            <button class="start-button"> <a href="#">Start</a></button>
-        </div>
+        </section>
     </main>      
     <footer>
         <!-- <p>Copyright © Get It Done 2023</p> -->

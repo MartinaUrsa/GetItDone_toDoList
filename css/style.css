@@ -95,7 +95,7 @@ header .icons .hamburger-menu i {
 }
 @media (min-width: 1024px) {
   header {
-    padding: 20px 50px;
+    padding: 20px 40px;
   }
   header a img {
     width: 80px;
@@ -202,6 +202,73 @@ body main .main-title .subtitle h2 {
     font-weight: lighter;
   }
 }
+main .to-do {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+main .to-do h3 {
+  font-family: "Cormorant", serif;
+  font-size: 40px;
+  font-weight: lighter;
+  text-align: center;
+}
+main .to-do .new-list {
+  background-color: #D0A95D;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 5px 35px;
+  font-family: "Montserrat", sans-serif;
+}
+main .to-do .list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: solid 1px #E3B029;
+  border-radius: 30px;
+  width: 245px;
+  height: 280px;
+}
+main .to-do .list .tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+main .to-do .list .tasks .task {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  font-size: 15px;
+  border: solid 1px lightgrey;
+  border-radius: 30px;
+  width: 200px;
+  height: 32px;
+}
+main .to-do .list .tasks .task:hover {
+  border-color: #E3B029;
+}
+main .to-do .list .tasks .new {
+  color: lightgrey;
+}
+main .to-do .list .new-task {
+  font-size: 12px;
+  background-color: #1C4662;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 5px 30px;
+  font-family: "Montserrat", sans-serif;
+}
+
 footer p {
   margin-top: 40px;
   text-align: center;
