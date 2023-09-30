@@ -37,6 +37,7 @@ body {
         main {
             .main-title {
                 height: 50vh;
+                padding-top: 30px;
                 h1 {
                     font-size: 100px;
                 }
@@ -57,11 +58,13 @@ body {
 @media (min-width: 1024px) {
     body {
         main {
-            padding-top: 40px;
+            height: 60vh;
             .main-title {
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                padding-top: 30px;
                 h1 {
                     font-family: $titles-font;
                     font-weight: lighter;

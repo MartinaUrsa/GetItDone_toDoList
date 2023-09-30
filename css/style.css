@@ -27,15 +27,13 @@
 
 header {
   background-color: #FFFCF1;
-  position: sticky;
-  top: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-template-areas: ". logo hamburger-menu";
   align-items: center;
   justify-items: center;
-  padding: 30px 30px 0px 30px;
+  padding: 20px 30px 0px 30px;
 }
 header a {
   grid-area: logo;
@@ -63,7 +61,7 @@ header .icons .hamburger-menu i {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 40px;
+    padding: 20px 40px 0px 40px;
   }
   header a {
     grid-area: logo;
@@ -162,6 +160,7 @@ body main .main-title .subtitle h2 {
 @media (min-width: 768px) {
   body main .main-title {
     height: 50vh;
+    padding-top: 30px;
   }
   body main .main-title h1 {
     font-size: 100px;
@@ -175,12 +174,14 @@ body main .main-title .subtitle h2 {
 }
 @media (min-width: 1024px) {
   body main {
-    padding-top: 40px;
+    height: 60vh;
   }
   body main .main-title {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 30px;
   }
   body main .main-title h1 {
     font-family: "Cormorant", serif;
@@ -207,7 +208,7 @@ main .to-do {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 main .to-do h3 {
   font-family: "Cormorant", serif;
@@ -231,8 +232,8 @@ main .to-do .list {
   padding: 15px;
   border: solid 1px #E3B029;
   border-radius: 30px;
-  width: 245px;
-  height: 280px;
+  width: 70%;
+  height: 250px;
 }
 main .to-do .list .tasks {
   display: flex;
@@ -240,6 +241,7 @@ main .to-do .list .tasks {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 main .to-do .list .tasks .task {
   display: flex;
@@ -250,7 +252,7 @@ main .to-do .list .tasks .task {
   font-size: 15px;
   border: solid 1px lightgrey;
   border-radius: 30px;
-  width: 200px;
+  width: 100%;
   height: 32px;
 }
 main .to-do .list .tasks .task:hover {
@@ -269,6 +271,26 @@ main .to-do .list .new-task {
   font-family: "Montserrat", sans-serif;
 }
 
+@media (min-width: 768px) {
+  main .to-do h3 {
+    font-size: 60px;
+  }
+  main .to-do .list {
+    max-width: 50%;
+  }
+}
+@media (min-width: 1024px) {
+  main .to-do .list {
+    max-width: 40%;
+  }
+  main .to-do .list .new-task {
+    font-size: 14px;
+    padding: 8px 40px;
+  }
+  main .to-do .list .tasks .task {
+    font-size: 16px;
+  }
+}
 footer p {
   margin-top: 40px;
   text-align: center;
