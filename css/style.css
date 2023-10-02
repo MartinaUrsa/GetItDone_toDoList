@@ -12,11 +12,14 @@
   border-style: none;
   background-color: #1C4662;
   margin-top: 30px;
+  cursor: pointer;
 }
 .start-button:hover {
   background-color: #133044;
 }
 .start-button a {
+  display: block;
+  width: 100%;
   text-decoration: none;
   color: white;
   font-size: 18px;
@@ -203,72 +206,97 @@ body main .main-title .subtitle h2 {
     font-weight: lighter;
   }
 }
-main .to-do {
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+main .todo-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  width: 70%;
+  margin-top: 20px;
 }
-main .to-do h3 {
+main .todo-list h3 {
   font-family: "Cormorant", serif;
-  font-size: 40px;
+  font-size: 45px;
   font-weight: lighter;
   text-align: center;
+  margin-bottom: 10px;
 }
-main .to-do .new-list {
-  background-color: #D0A95D;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 5px 35px;
-  font-family: "Montserrat", sans-serif;
+main .todo-list .container {
+  padding-top: 20px;
+  gap: 20px;
 }
-main .to-do .list {
+main .todo-list .container #input {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border: solid 1px #E3B029;
+  background-color: #D0A95D;
   border-radius: 30px;
-  width: 70%;
-  height: 250px;
-}
-main .to-do .list .tasks {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-main .to-do .list .tasks .task {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  font-size: 15px;
-  border: solid 1px lightgrey;
-  border-radius: 30px;
-  width: 100%;
+  width: 280px;
   height: 32px;
+  padding-left: 20px;
+  margin-bottom: 10px;
 }
-main .to-do .list .tasks .task:hover {
-  border-color: #E3B029;
+main .todo-list .container #input input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
 }
-main .to-do .list .tasks .new {
-  color: lightgrey;
+main .todo-list .container #input ::placeholder {
+  color: rgb(255, 255, 255);
 }
-main .to-do .list .new-task {
-  font-size: 12px;
+main .todo-list .container #input #add-task-btn {
   background-color: #1C4662;
   color: white;
   border: none;
+  outline: none;
+  padding: 8px 15px;
   border-radius: 30px;
-  padding: 5px 30px;
+  cursor: pointer;
+}
+main .todo-list .container #task-list .item {
+  display: flex;
+  align-items: first center;
+  justify-content: space-between;
+}
+main .todo-list .container #task-list .item input {
+  cursor: pointer;
+}
+main .todo-list .container #task-list .item .added-task {
   font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  flex: 1 1 0%;
+  margin: 0 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+main .todo-list .container #task-list .item .actions button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.7;
+  transform: 0.1s;
+}
+main .todo-list .container #task-list .item .actions button:hover {
+  opacity: 1;
+}
+main .todo-list .container #task-list .complete {
+  opacity: 0.7;
+}
+main .todo-list .container #task-list .complete label {
+  text-decoration: line-through;
 }
 
 @media (min-width: 768px) {

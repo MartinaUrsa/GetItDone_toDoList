@@ -5,10 +5,13 @@
     border-style: none;
     background-color: $accent-color;
     margin-top: 30px;
+    cursor: pointer;
     &:hover {
         background-color: #133044;
     }
     a{
+        display: block;
+        width: 100%;
         text-decoration: none;
         color: white;
         font-size: 18px;
