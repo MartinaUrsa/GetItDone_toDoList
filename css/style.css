@@ -263,24 +263,18 @@ main .todo-list .container #input #add-task-btn {
   border-radius: 30px;
   cursor: pointer;
 }
-main .todo-list .container #task-list .item {
+main .todo-list .container #task-list .list-item {
   display: flex;
-  align-items: first center;
   justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 5px 0;
 }
-main .todo-list .container #task-list .item input {
-  cursor: pointer;
-}
-main .todo-list .container #task-list .item .added-task {
-  font-family: "Montserrat", sans-serif;
-  cursor: pointer;
+main .todo-list .container #task-list .list-item label {
   flex: 1 1 0%;
-  margin: 0 1rem;
-  border: none;
-  outline: none;
-  background-color: transparent;
+  margin: 0 10px;
 }
-main .todo-list .container #task-list .item .actions button {
+main .todo-list .container #task-list .actions button {
   background: none;
   border: none;
   outline: none;
@@ -289,13 +283,13 @@ main .todo-list .container #task-list .item .actions button {
   opacity: 0.7;
   transform: 0.1s;
 }
-main .todo-list .container #task-list .item .actions button:hover {
+main .todo-list .container #task-list .actions button:hover {
   opacity: 1;
 }
-main .todo-list .container #task-list .complete {
+main .todo-list .container .complete {
   opacity: 0.7;
 }
-main .todo-list .container #task-list .complete label {
+main .todo-list .container .complete label {
   text-decoration: line-through;
 }
 

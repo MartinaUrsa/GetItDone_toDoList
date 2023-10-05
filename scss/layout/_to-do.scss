@@ -53,22 +53,17 @@ main {
                 }
             }
             #task-list {
-                .item {
+                .list-item {
                     display: flex;
-                    align-items: first center;
                     justify-content: space-between;
-                    input {
-                        cursor: pointer;
-                    }
-                    .added-task {
-                        font-family: $main-font;
-                        cursor: pointer;
+                    align-items: center;
+                    list-style: none;
+                    padding: 5px 0;
+                    label {
                         flex: 1 1 0%;
-                        margin: 0 1rem;
-                        border: none;
-                        outline: none;
-                        background-color: transparent;
+                        margin: 0 10px;
                     }
+                }
                     .actions {
                         button {
                             background: none;
@@ -93,7 +88,6 @@ main {
             }
         }
         }
-    }
 
 @media (min-width: 768px) {
     main {
