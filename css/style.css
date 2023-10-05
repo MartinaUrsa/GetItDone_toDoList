@@ -231,7 +231,7 @@ main .todo-list .container {
   padding-top: 20px;
   gap: 20px;
 }
-main .todo-list .container #input {
+main .todo-list .container .input-div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -242,7 +242,7 @@ main .todo-list .container #input {
   padding-left: 20px;
   margin-bottom: 10px;
 }
-main .todo-list .container #input input {
+main .todo-list .container .input-div input {
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   padding: 10px;
@@ -251,10 +251,10 @@ main .todo-list .container #input input {
   outline: none;
   color: white;
 }
-main .todo-list .container #input ::placeholder {
+main .todo-list .container .input-div ::placeholder {
   color: rgb(255, 255, 255);
 }
-main .todo-list .container #input #add-task-btn {
+main .todo-list .container .input-div #add-task-btn {
   background-color: #1C4662;
   color: white;
   border: none;
@@ -270,9 +270,23 @@ main .todo-list .container #task-list .list-item {
   list-style: none;
   padding: 5px 0;
 }
-main .todo-list .container #task-list .list-item label {
+main .todo-list .container #task-list .list-item input[type=text] {
   flex: 1 1 0%;
   margin: 0 10px;
+  font-size: 16px;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+main .todo-list .container #task-list .list-item input[type=text]:not(:disabled) {
+  border-bottom: 1px solid grey;
+}
+main .todo-list .container #task-list .completed {
+  opacity: 0.7;
+}
+main .todo-list .container #task-list .completed input[type=text] {
+  text-decoration: line-through;
 }
 main .todo-list .container #task-list .actions button {
   background: none;

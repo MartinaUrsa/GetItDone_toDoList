@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="../css/style.css">
     <!-- Favicon -->
     <link rel="icon" href="../assets/getItDone Logo.svg">
-    <!-- Sweet Alert -->
+    <!-- CDN sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- CDN toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body>
     <header>
@@ -51,7 +54,7 @@
         <section class="todo-list">
             <h3>my to-do list</h3>
             <div class="container">
-                <div id="input">
+                <div class="input-div">
                     <input type="text" id="input-box" placeholder="Type new task">
                     <button id="add-task-btn">+</button>
                 </div>
@@ -66,3 +69,5 @@
     <script src="../js/toDo.js"></script>
 </body>
 </html>
+
+<!-- <label class='label' for="checkbox">${newTask}</label> -->

@@ -2,10 +2,11 @@ const inputBox = document.getElementById("input-box");
 const addTaskBtn = document.getElementById("add-task-btn");
 const taskList = document.getElementById("task-list");
 
-// Escuchamos evento al hacer 'click' en el botón '+'
+// EVENTOS
+// Escuchamos evento 'click' en el botón '+'
 addTaskBtn.addEventListener('click', addNewTask);
 
-// Escuchamos evento al dar Enter
+// Escuchamos evento Enter en inputBox
 inputBox.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
         addNewTask();
@@ -13,8 +14,8 @@ inputBox.addEventListener("keyup", (e) => {
     
 })
 
-
-// Función para añadir tareas
+// FUNCIONES
+// Añadir tareas
 function addNewTask() {
     if (inputBox.value === '') {
         Swal.fire({
@@ -29,11 +30,11 @@ function addNewTask() {
         let newTask = inputBox.value;
         
         const listItem = document.createElement('li');
-        listItem.classList.add('list-item')
+        listItem.classList.add('list-item');
 
         listItem.innerHTML += `
             <input type="checkbox" id="checkbox">
-            <label class='label' for="checkbox">${newTask}</label>
+            <input type="text" id="itemText" value=${newTask} disabled>
             <div class="actions">
                 <button class="edit-btn"><i class="fa-regular fa-pen-to-square" style="color: #595959;"></i></button>
                 <button class="delete-btn"><i class="fa-regular fa-circle-xmark" style="color: #595959;"></i></button>
@@ -42,38 +43,56 @@ function addNewTask() {
         taskList.append(listItem)
         inputBox.value = ''; 
 
-
-        // Escuchamos evento al hacer click en el botón delete-btn
+        // Escuchamos evento 'click' en delete-btn
         const deleteButton = listItem.querySelector(".delete-btn");
+        deleteButton.addEventListener("click", () => deleteTask(listItem));
 
-        deleteButton.addEventListener("click", () => {
-            listItem.remove();
-        })
-
-
-        // Escuchamos evento al hacer click en el botón edit-btn
+        // Escuchamos evento 'click' edit-btn
         const editButton = listItem.querySelector(".edit-btn");
-        
-        editButton.addEventListener("click", () => {
-            Swal.fire({
-                title: 'Ingresa una nueva tarea:',
-                input: 'text',
-                showCancelButton: true,
-                cancelButtonText: 'Cancelar',
-                confirmButtonText: 'Guardar',
-                confirmButtonColor:'#E3B029',
-                inputValidator: (value) => {
-                    if (!value) {
-                    return '¡Cuidado! Debes ingresar algo para continuar.';
-                    }
-                }
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    const newTaskValue = result.value; // result.value es el valor ingresado por el usuario en el prompt de Swal
-                    listItem.querySelector('.label').innerText = newTaskValue;
-                }
-            });
-        });
+        editButton.addEventListener("click", () => editTask(listItem));
     }
+}            
+
+// Eliminar tarea
+function deleteTask(listItem) {
+    Swal.fire({
+        icon: 'warning',
+        title: `¡Está por eliminar una tarea! ¿Avanzamos?`,
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor:'#E3B029',
+        width: 400,
+        }).then((result) => {
+        if (result.isConfirmed) {
+            listItem.remove();
+            Toastify({
+                text: 'Tarea eliminada correctamente.',
+                duration: 3000,
+                gravity: 'bottom',
+                style: {
+                    background: 'linear-gradient(to right, #D0A95D, #E3B029)'
+                }
+            }).showToast();
+        }
+    });
 }
 
+// Editar tarea
+function editTask(listItem) {
+    const itemText = listItem.querySelector('#itemText');
+        itemText.removeAttribute("disabled");
+        itemText.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+                itemText.setAttribute("disabled", "disabled");
+                Toastify({
+                    text: 'Tarea editada con éxito.',
+                    duration: 3000,
+                    gravity: 'bottom',
+                    style: {
+                        background: 'linear-gradient(to right, #D0A95D, #E3B029)'
+                    }
+                }).showToast()
+            }
+        })
+}
