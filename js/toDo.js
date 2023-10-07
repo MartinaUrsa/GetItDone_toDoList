@@ -2,6 +2,8 @@ const inputBox = document.getElementById("input-box");
 const addTaskBtn = document.getElementById("add-task-btn");
 const taskList = document.getElementById("task-list");
 
+let tasks = [];
+
 // EVENTOS
 // Escuchamos evento 'click' en el botón '+'
 addTaskBtn.addEventListener('click', addNewTask);
@@ -10,11 +12,12 @@ addTaskBtn.addEventListener('click', addNewTask);
 inputBox.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
         addNewTask();
-    }
-    
-})
+    }  
+});
 
-let tasks = [];
+// Escuchamos evento de carga de la página
+document.addEventListener('DOMContentLoaded', getTasks);
+
 
 // FUNCIONES
 // Añadir tareas
@@ -29,7 +32,6 @@ function addNewTask() {
         })
     }
     else { 
-
         const listItem = document.createElement('li');
         listItem.classList.add('list-item');
 
@@ -63,13 +65,51 @@ function addNewTask() {
 
         // Guardamos tarea en storage
         saveTaskToStorage(tasks);
-    }
-}            
+    };
+};
+
+function showTasks(tasks) {
+    taskList.innerHTML = '';
+
+    tasks.forEach(newTask => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-item');
+        listItem.innerHTML += `
+            <input type="checkbox" id="checkbox">
+            <input type="text" id="itemText" value="${newTask}" disabled>
+            <div class="actions">
+                <button class="edit-btn"><i class="fa-regular fa-pen-to-square" style="color: #595959;"></i></button>
+                <button class="delete-btn"><i class="fa-regular fa-circle-xmark" style="color: #595959;"></i></button>
+            </div>`
+    
+        taskList.appendChild(listItem)
+
+        // Aplicamos eventos a listItems tomados del localStorage 
+        deleteTask(listItem);
+        editTask(listItem);
+
+        const checkbox = listItem.querySelector('#checkbox');
+        checkbox.addEventListener("change", () => completedTask(listItem, checkbox));
+        
+    });
+};
 
 // Guardar tareas en el localStorage
 function saveTaskToStorage(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+function getTaskStorage() {
+    const tasksStorage = JSON.parse(localStorage.getItem('tasks'));
+    return tasksStorage;
+}
+
+function getTasks() {
+    if(localStorage.getItem('tasks')) {
+        tasks = getTaskStorage();
+        showTasks(tasks);
+    };
+};
 
 // Eliminar tarea
 function deleteTask(listItem) {
