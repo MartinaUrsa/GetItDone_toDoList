@@ -8,7 +8,7 @@ main {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 70%;
+        width: 100%;
         margin-top: 20px;
         h3 {
             font-family: $titles-font;
@@ -19,21 +19,27 @@ main {
         }
         .container {
             padding-top: 20px;
-            gap: 20px;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            flex-direction: column;
             .input-div {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 background-color: $softer-color;
                 border-radius: 30px;
-                width: 280px;
+                min-width: 280px;
+                width: 80%;
                 height: 32px;
                 padding-left: 20px;
                 margin-bottom: 10px;
-                input {
+                #input-box {
                     font-family: $main-font;
                     font-size: 15px;
                     padding: 10px;
+                    width: 100%;
                     background: transparent;
                     border: none;
                     outline: none;
@@ -53,6 +59,7 @@ main {
                 }
             }
             #task-list {
+                width: 80%;
                 .list-item {
                     display: flex;
                     justify-content: space-between;
@@ -99,12 +106,26 @@ main {
 
 @media (min-width: 768px) {
     main {
-        .to-do {
+        .todo-list {
             h3 {
                 font-size: 60px;
             }
-            .list {
-                max-width: 50%;
+            .container {
+                width: 70%;
+                .input-div {
+                    width: 70%;
+                    #input-box {
+                        font-size: 16px;
+                    }
+                }
+                #task-list {
+                    width: 70%;
+                    .list-item {
+                        #itemText {
+                            font-size: 18px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -112,16 +133,22 @@ main {
 
 @media (min-width: 1024px) {
     main {
-        .to-do {
-            .list {
-                max-width: 40%;
-                .new-task {
-                font-size: 14px;
-                padding: 8px 40px;
-                }
-                .tasks {
-                    .task {
+        .todo-list {
+            h3 {
+                font-size: 65px;
+            }
+            .container {
+                width: 70%;
+                .input-div {
+                    #input-box {
                         font-size: 16px;
+                    }
+                }
+                #task-list {
+                    .list-item {
+                        #itemText {
+                            font-size: 20px;
+                        }
                     }
                 }
             }

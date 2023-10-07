@@ -14,6 +14,8 @@ inputBox.addEventListener("keyup", (e) => {
     
 })
 
+let tasks = [];
+
 // FUNCIONES
 // Añadir tareas
 function addNewTask() {
@@ -27,72 +29,130 @@ function addNewTask() {
         })
     }
     else { 
-        let newTask = inputBox.value;
-        
+
         const listItem = document.createElement('li');
         listItem.classList.add('list-item');
 
+        let newTask = inputBox.value;
+
+        tasks.push(newTask);
+
         listItem.innerHTML += `
             <input type="checkbox" id="checkbox">
-            <input type="text" id="itemText" value=${newTask} disabled>
+            <input type="text" id="itemText" value="${newTask}" disabled>
             <div class="actions">
                 <button class="edit-btn"><i class="fa-regular fa-pen-to-square" style="color: #595959;"></i></button>
                 <button class="delete-btn"><i class="fa-regular fa-circle-xmark" style="color: #595959;"></i></button>
             </div>`
 
-        taskList.append(listItem)
-        inputBox.value = ''; 
+        taskList.appendChild(listItem)
+        inputBox.value = '';
 
-        // Escuchamos evento 'click' en delete-btn
-        const deleteButton = listItem.querySelector(".delete-btn");
-        deleteButton.addEventListener("click", () => deleteTask(listItem));
+        // Llamamos a la función saveTaskToStorage() para guardar el nuevo array con la newTask
+        saveTaskToStorage(tasks);
 
-        // Escuchamos evento 'click' edit-btn
-        const editButton = listItem.querySelector(".edit-btn");
-        editButton.addEventListener("click", () => editTask(listItem));
+        // Llamamos a función deleteTask() para que pueda acceder al listItem
+        deleteTask(listItem);
+
+        // Llamamos a función editTask() para que pueda acceder al listItem
+        editTask(listItem);
+
+        // Escuchamos evento 'change' en checkbox
+        const checkbox = listItem.querySelector('#checkbox');
+        checkbox.addEventListener("change", () => completedTask(listItem, checkbox));
+
+        // Guardamos tarea en storage
+        saveTaskToStorage(tasks);
     }
 }            
 
-// Eliminar tarea
-function deleteTask(listItem) {
-    Swal.fire({
-        icon: 'warning',
-        title: `¡Está por eliminar una tarea! ¿Avanzamos?`,
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor:'#E3B029',
-        width: 400,
-        }).then((result) => {
-        if (result.isConfirmed) {
-            listItem.remove();
-            Toastify({
-                text: 'Tarea eliminada correctamente.',
-                duration: 3000,
-                gravity: 'bottom',
-                style: {
-                    background: 'linear-gradient(to right, #D0A95D, #E3B029)'
-                }
-            }).showToast();
-        }
-    });
+// Guardar tareas en el localStorage
+function saveTaskToStorage(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
-// Editar tarea
-function editTask(listItem) {
-    const itemText = listItem.querySelector('#itemText');
-        itemText.removeAttribute("disabled");
-        itemText.addEventListener("keyup", (e) => {
-            if (e.key === "Enter") {
-                itemText.setAttribute("disabled", "disabled");
+// Eliminar tarea
+function deleteTask(listItem) {
+    const deleteButton = listItem.querySelector(".delete-btn");
+    deleteButton.addEventListener("click", () => {
+        Swal.fire({
+            icon: 'warning',
+            title: `¡Está por eliminar una tarea! ¿Avanzamos?`,
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor:'#E3B029',
+            width: 400,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Eliminamos task de array tasks
+                const itemText = listItem.querySelector('#itemText');
+                const taskIndex = tasks.indexOf(itemText.value);
+                tasks.splice(taskIndex, 1);
+
+                // Eliminamos tasks de taskList
+                listItem.remove();
+
+                // Actualizamos localStorage
+                saveTaskToStorage(tasks);
+
                 Toastify({
-                    text: 'Tarea editada con éxito.',
+                    text: 'Tarea eliminada correctamente.',
                     duration: 3000,
                     gravity: 'bottom',
                     style: {
                         background: 'linear-gradient(to right, #D0A95D, #E3B029)'
                     }
-                }).showToast()
+                }).showToast();
+            }
+        });
+    });
+}
+
+// Editar tarea
+function editTask(listItem) {
+    const editButton = listItem.querySelector(".edit-btn");
+    editButton.addEventListener("click", () => {
+        const itemText = listItem.querySelector('#itemText');
+        const taskIndex = tasks.indexOf(itemText.value);
+        itemText.removeAttribute("disabled");
+        itemText.focus();
+        itemText.setSelectionRange(itemText.value.length, itemText.value.length);
+
+        itemText.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+                if(itemText.value.length === 0) {
+                    listItem.remove();
+                    tasks.splice(taskIndex, 1);
+                    // Actualizamos localStorage
+                    saveTaskToStorage(tasks);
+
+                } else {
+                    itemText.setAttribute("disabled", "disabled");
+                    tasks[taskIndex] = itemText.value;
+                    // Actualizamos localStorage
+                    saveTaskToStorage(tasks);
+
+                    Toastify({
+                        text: 'Tarea editada con éxito.',
+                        duration: 3000,
+                        gravity: 'bottom',
+                        style: {
+                            background: 'linear-gradient(to right, #D0A95D, #E3B029)'
+                        }
+                    }).showToast()
+                }
             }
         })
+    });
 }
+
+// Completar tarea
+function completedTask(listItem, checkbox) {
+    if(checkbox.checked) {
+        listItem.classList.add("completed")
+    } else {
+        listItem.classList.remove("completed")
+    }
+}
+

@@ -217,7 +217,7 @@ main .todo-list {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 100%;
   margin-top: 20px;
 }
 main .todo-list h3 {
@@ -229,7 +229,10 @@ main .todo-list h3 {
 }
 main .todo-list .container {
   padding-top: 20px;
-  gap: 20px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 main .todo-list .container .input-div {
   display: flex;
@@ -237,15 +240,17 @@ main .todo-list .container .input-div {
   justify-content: space-between;
   background-color: #D0A95D;
   border-radius: 30px;
-  width: 280px;
+  min-width: 280px;
+  width: 80%;
   height: 32px;
   padding-left: 20px;
   margin-bottom: 10px;
 }
-main .todo-list .container .input-div input {
+main .todo-list .container .input-div #input-box {
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   padding: 10px;
+  width: 100%;
   background: transparent;
   border: none;
   outline: none;
@@ -262,6 +267,9 @@ main .todo-list .container .input-div #add-task-btn {
   padding: 8px 15px;
   border-radius: 30px;
   cursor: pointer;
+}
+main .todo-list .container #task-list {
+  width: 80%;
 }
 main .todo-list .container #task-list .list-item {
   display: flex;
@@ -302,23 +310,37 @@ main .todo-list .container #task-list .actions button:hover {
 }
 
 @media (min-width: 768px) {
-  main .to-do h3 {
+  main .todo-list h3 {
     font-size: 60px;
   }
-  main .to-do .list {
-    max-width: 50%;
+  main .todo-list .container {
+    width: 70%;
+  }
+  main .todo-list .container .input-div {
+    width: 70%;
+  }
+  main .todo-list .container .input-div #input-box {
+    font-size: 16px;
+  }
+  main .todo-list .container #task-list {
+    width: 70%;
+  }
+  main .todo-list .container #task-list .list-item #itemText {
+    font-size: 18px;
   }
 }
 @media (min-width: 1024px) {
-  main .to-do .list {
-    max-width: 40%;
+  main .todo-list h3 {
+    font-size: 65px;
   }
-  main .to-do .list .new-task {
-    font-size: 14px;
-    padding: 8px 40px;
+  main .todo-list .container {
+    width: 70%;
   }
-  main .to-do .list .tasks .task {
+  main .todo-list .container .input-div #input-box {
     font-size: 16px;
+  }
+  main .todo-list .container #task-list .list-item #itemText {
+    font-size: 20px;
   }
 }
 footer p {
