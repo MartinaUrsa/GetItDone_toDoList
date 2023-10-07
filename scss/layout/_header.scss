@@ -14,12 +14,12 @@ header {
             height: 100px;
         }
     }
-    .header-nav {
-        display: none;
-    }
     .icons {
         grid-area: hamburger-menu;
         justify-self: right;
+        .home-button {
+            display: none;
+        }
         .socials {
             display: none;
         }
@@ -47,6 +47,9 @@ header {
             justify-content: space-between;
             align-items: center;
             gap: 10px;
+            .home-button {
+                display: inline;
+            }
             .socials {
                 display: flex;
                 justify-content: center;
@@ -57,13 +60,6 @@ header {
                     i{
                         font-size: 30px;
                     }
-                }
-            }
-            .hamburger-menu {
-                grid-area: hamburger-menu;
-                justify-self: center;
-                i {
-                    font-size: 30px;
                 }
             }
         }
@@ -80,34 +76,11 @@ header {
                 height: 80px;
             }
         }
-        .header-nav {
-            display: block;
-            ul {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 60px;
-                li {
-                    list-style: none;
-                    a {
-                        color: black;
-                        text-decoration: none;
-                        font-size: 20px;
-                        &:hover {
-                            color: $brighter-color;
-                        }
-                    }
-                }
-            }
-        }
         .icons {
             .socials {
                 i{
                     font-size: 30px;
                 }
-            }
-            .hamburger-menu {
-                display: none;
             }
         }
     }

@@ -28,6 +28,28 @@
   font-weight: lighter;
 }
 
+.home-button {
+  width: 100px;
+  height: 30px;
+  border-radius: 30px;
+  border-style: none;
+  background-color: #1C4662;
+  cursor: pointer;
+}
+.home-button:hover {
+  background-color: #133044;
+}
+.home-button a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 100;
+  font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
+}
+
 header {
   background-color: #FFFCF1;
   display: grid;
@@ -45,12 +67,12 @@ header a img {
   width: 100px;
   height: 100px;
 }
-header .header-nav {
-  display: none;
-}
 header .icons {
   grid-area: hamburger-menu;
   justify-self: right;
+}
+header .icons .home-button {
+  display: none;
 }
 header .icons .socials {
   display: none;
@@ -76,6 +98,9 @@ header .icons .hamburger-menu i {
     align-items: center;
     gap: 10px;
   }
+  header .icons .home-button {
+    display: inline;
+  }
   header .icons .socials {
     display: flex;
     justify-content: center;
@@ -84,13 +109,6 @@ header .icons .hamburger-menu i {
     grid-area: socials;
   }
   header .icons .socials a i {
-    font-size: 30px;
-  }
-  header .icons .hamburger-menu {
-    grid-area: hamburger-menu;
-    justify-self: center;
-  }
-  header .icons .hamburger-menu i {
     font-size: 30px;
   }
 }
@@ -102,31 +120,8 @@ header .icons .hamburger-menu i {
     width: 80px;
     height: 80px;
   }
-  header .header-nav {
-    display: block;
-  }
-  header .header-nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-  }
-  header .header-nav ul li {
-    list-style: none;
-  }
-  header .header-nav ul li a {
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  header .header-nav ul li a:hover {
-    color: #E3B029;
-  }
   header .icons .socials i {
     font-size: 30px;
-  }
-  header .icons .hamburger-menu {
-    display: none;
   }
 }
 body {
