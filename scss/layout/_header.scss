@@ -14,12 +14,12 @@ header {
             height: 100px;
         }
     }
+    .nav {
+        display: none;
+    }
     .icons {
         grid-area: hamburger-menu;
         justify-self: right;
-        .home-button {
-            display: none;
-        }
         .socials {
             display: none;
         }
@@ -47,9 +47,6 @@ header {
             justify-content: space-between;
             align-items: center;
             gap: 10px;
-            .home-button {
-                display: inline;
-            }
             .socials {
                 display: flex;
                 justify-content: center;
@@ -76,12 +73,35 @@ header {
                 height: 80px;
             }
         }
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            li {
+                list-style: none;
+                a {
+                    text-decoration: none;
+                    font-size: 18px;
+                    color: black;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .main-tab {
+                color: $brighter-color;
+            }
+        }
         .icons {
             .socials {
                 i{
                     font-size: 30px;
                 }
             }
+            .hamburger-menu {
+                display: none;
+            } 
         }
     }
 }

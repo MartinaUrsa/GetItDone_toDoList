@@ -25,8 +25,8 @@
         </a>
         <ul class="nav">
             <li><a href="../index.html">HOME</a></li>
-            <li><a class="main-tab" href="to-do.html">TO-DO</a></li>
-            <li><a href="./contact.html">CONTACT</a></li>
+            <li><a href="./to-do.html">TO-DO</a></li>
+            <li><a class="main-tab" href="contact.html">CONTACT</a></li>
         </ul>
         <!-- Header Icons -->
         <div class="icons">
@@ -37,23 +37,35 @@
         </div>
     </header>
     <main>
-        <section class="todo-list">
-            <h3>my to-do list</h3>
-            <div class="container">
-                <div class="input-div">
-                    <input type="text" id="input-box" placeholder="Type new task">
-                    <button id="add-task-btn">+</button>
+        <!-- form -->            
+        <div class="form-container">
+            <h3>Contact us!</h3>
+            <form id="contact_form">
+                <div class="user-details">
+                    <div class="input-box">
+                        <label for="user_name">Name:</label>
+                        <input type="text" placeholder="John Doe" name="user_name" id="user_name" required>    
+                    </div>          
+                    <div class="input-box">
+                        <label for="user_email">Email:</label>
+                        <input type="text" placeholder="johndoe@mail.com" name="user_email" id="user_email" required>
+                    </div>
+                    <div class="input-box message">
+                        <label for="message">Message:</label>
+                        <input type="text" id="message" placeholder="Write your message here." required>
+                    </div>
                 </div>
-                <ul id="task-list"></ul>
-            </div>
-        </section>
+                <div class="button">
+                    <input type="submit" value="Send">
+                </div>
+            </form>
+        </div>
     </main>      
     <footer> 
         <!-- <p>Copyright © Get It Done 2023</p> -->
     </footer>
 
-    <script src="../js/functions.js"></script>
-    <script src="../js/toDo.js"></script>
+    <script src="../js/contact-form.js"></script>
 </body>
 </html>
 
