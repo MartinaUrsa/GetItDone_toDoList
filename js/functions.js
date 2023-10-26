@@ -73,7 +73,9 @@ function editTask(listItem) {
     const editButton = listItem.querySelector(".edit-btn");
     editButton.addEventListener("click", () => {
         const itemText = listItem.querySelector('#itemText');
-        const taskIndex = tasks.indexOf(itemText.value);
+        const taskIndex = tasks.findIndex(newTask => newTask.task === itemText.value);
+        console.log(tasks);
+        console.log(taskIndex);
         itemText.removeAttribute("disabled");
         itemText.focus();
         itemText.setSelectionRange(itemText.value.length, itemText.value.length);
@@ -88,7 +90,7 @@ function editTask(listItem) {
 
                 } else {
                     itemText.setAttribute("disabled", "disabled");
-                    tasks[taskIndex] = itemText.value;
+                    tasks[taskIndex].task = itemText.value;
                     // Actualizamos localStorage
                     saveTaskToStorage(tasks);
 
