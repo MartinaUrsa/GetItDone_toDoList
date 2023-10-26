@@ -125,7 +125,7 @@ function deleteTask(listItem) {
             if (result.isConfirmed) {
                 // Eliminamos task de array tasks
                 const itemText = listItem.querySelector('#itemText');
-                const taskIndex = tasks.indexOf(itemText.value);
+                const taskIndex = tasks.findIndex(newTask => newTask.task === itemText.value);
                 tasks.splice(taskIndex, 1);
 
                 // Eliminamos tasks de taskList
